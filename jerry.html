@@ -1,0 +1,1044 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #e8698a;
+    --rose-light: #f7c5d5;
+    --rose-pale: #fdf0f4;
+    --lavender: #b57bee;
+    --lavender-light: #e8d5f9;
+    --lavender-pale: #f7f0fd;
+    --gold: #c9956f;
+    --cream: #fff8f9;
+    --text-dark: #4a2c3a;
+    --text-mid: #7a4a5e;
+    --text-soft: #b07890;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ── floating hearts canvas ── */
+  #hearts-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(253,240,244,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rose-light);
+    padding: 0 2rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.35rem;
+    color: var(--rose);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rose); }
+
+  /* ── sections ── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── hero ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    background: linear-gradient(160deg, #fdf0f4 0%, #f7f0fd 50%, #fdf0f4 100%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: var(--lavender);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-names {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.05;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+
+  .hero-names .amp {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s forwards;
+  }
+
+  /* ── timer ── */
+  .timer-wrap {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+
+  .timer-block {
+    background: white;
+    border: 1px solid var(--rose-light);
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    min-width: 72px;
+    text-align: center;
+    box-shadow: 0 2px 20px rgba(232,105,138,0.08);
+  }
+
+  .timer-block .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--rose);
+    line-height: 1;
+    display: block;
+  }
+
+  .timer-block .lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── date badge ── */
+  .date-badge {
+    margin-top: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--lavender-light);
+    color: var(--lavender);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 0.9s 1s forwards;
+  }
+
+  .date-badge span { font-size: 0.9rem; }
+
+  /* ── scroll hint ── */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-soft);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+  }
+
+  .scroll-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--rose-light);
+  }
+
+  /* ── section base ── */
+  .section-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .section-body {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    max-width: 540px;
+  }
+
+  /* ── our story timeline ── */
+  #story { background: white; }
+
+  .timeline {
+    position: relative;
+    margin-top: 2.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0; bottom: 0;
+    width: 1.5px;
+    background: linear-gradient(to bottom, var(--rose-light), var(--lavender-light));
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.2rem;
+    align-items: flex-start;
+  }
+
+  .tl-dot {
+    flex-shrink: 0;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--rose-pale);
+    border: 1.5px solid var(--rose-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tl-content {
+    background: var(--cream);
+    border: 1px solid var(--rose-light);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    flex: 1;
+  }
+
+  .tl-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 2px;
+  }
+
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .tl-desc {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ── love letters ── */
+  #letters { background: var(--lavender-pale); }
+
+  .letters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .letter-card {
+    background: white;
+    border: 1px solid var(--lavender-light);
+    border-radius: 16px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .letter-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(181,123,238,0.14);
+  }
+
+  .letter-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+
+  .letter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    line-height: 1.4;
+  }
+
+  .letter-lock {
+    margin-top: 0.6rem;
+    font-size: 0.65rem;
+    color: var(--lavender);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .letter-overlay {
+    position: absolute;
+    inset: 0;
+    background: white;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .letter-card.open .letter-overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .letter-msg {
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.95rem;
+    color: var(--rose);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .letter-close {
+    margin-top: 0.6rem;
+    font-size: 0.65rem;
+    color: var(--text-soft);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── reasons ── */
+  #reasons { background: white; }
+
+  .reason-display {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, var(--rose-pale) 0%, var(--lavender-pale) 100%);
+    border: 1px solid var(--rose-light);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .reason-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  .reason-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.4;
+    max-width: 480px;
+    transition: opacity 0.4s;
+  }
+
+  .reason-btn {
+    background: var(--rose);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 1.8rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    transition: transform 0.15s, background 0.15s;
+    text-transform: uppercase;
+  }
+
+  .reason-btn:hover {
+    background: #d05578;
+    transform: scale(1.03);
+  }
+
+  /* ── secret area ── */
+  #secret { background: var(--rose-pale); }
+
+  .secret-box {
+    margin-top: 2rem;
+    background: white;
+    border: 1.5px dashed var(--rose-light);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 420px;
+  }
+
+  .secret-lock { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+  .secret-hint {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .secret-input {
+    border: 1px solid var(--rose-light);
+    border-radius: 999px;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.9rem;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    outline: none;
+    width: 100%;
+    color: var(--text-dark);
+    transition: border-color 0.2s;
+  }
+
+  .secret-input:focus { border-color: var(--rose); }
+
+  .secret-btn {
+    margin-top: 0.8rem;
+    background: var(--rose);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 0.55rem 1.6rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    transition: background 0.15s;
+    width: 100%;
+  }
+
+  .secret-btn:hover { background: #d05578; }
+
+  .secret-content {
+    display: none;
+    margin-top: 1.5rem;
+  }
+
+  .secret-content.visible { display: block; }
+
+  .secret-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.15rem;
+    color: var(--rose);
+    line-height: 1.7;
+  }
+
+  .secret-error {
+    color: #e06060;
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+    display: none;
+  }
+
+  /* ── stats ── */
+  #stats { background: var(--lavender-pale); }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .stat-card {
+    background: white;
+    border: 1px solid var(--lavender-light);
+    border-radius: 16px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+
+  .stat-icon { font-size: 1.6rem; margin-bottom: 0.4rem; display: block; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--lavender);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 4px;
+  }
+
+  /* ── footer ── */
+  footer {
+    background: var(--text-dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer .footer-love {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: var(--rose-light);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── mobile ── */
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .timer-wrap { gap: 0.6rem; }
+    .timer-block { min-width: 58px; padding: 0.75rem; }
+    .timer-block .num { font-size: 1.5rem; }
+  }
+</style>
+
+<h2 class="sr-only">Utkarsh & Sneha — A love website with countdown timer, our story, love letters, and more</h2>
+
+<canvas id="hearts-canvas"></canvas>
+
+<nav>
+  <div class="nav-brand">U & S</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#letters">Letters</a></li>
+    <li><a href="#reasons">Reasons</a></li>
+    <li><a href="#stats">Stats</a></li>
+    <li><a href="#secret">Secret</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">A little corner of the internet, just for us</p>
+  <h1 class="hero-names">Utkarsh <span class="amp">&amp;</span><br>Sneha</h1>
+  <p class="hero-sub">Together &nbsp;·&nbsp; Always &nbsp;·&nbsp; Forever</p>
+
+  <div class="timer-wrap">
+    <div class="timer-block">
+      <span class="num" id="t-days">0</span>
+      <span class="lbl">Days</span>
+    </div>
+    <div class="timer-block">
+      <span class="num" id="t-hours">0</span>
+      <span class="lbl">Hours</span>
+    </div>
+    <div class="timer-block">
+      <span class="num" id="t-mins">0</span>
+      <span class="lbl">Minutes</span>
+    </div>
+    <div class="timer-block">
+      <span class="num" id="t-secs">0</span>
+      <span class="lbl">Seconds</span>
+    </div>
+  </div>
+
+  <div class="date-badge">
+    <span>💗</span> Together since &nbsp;<strong id="since-date">—</strong>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-dot"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section id="story">
+  <div class="section-inner">
+    <p class="section-tag reveal">Chapter One</p>
+    <h2 class="section-title reveal">Our <em>Story</em></h2>
+    <p class="section-body reveal">Every love story is beautiful, but ours is my favourite. Here are the moments that led us here — the small, ordinary magic that made everything extraordinary.</p>
+
+    <div class="timeline reveal">
+
+      <div class="tl-item">
+        <div class="tl-dot">✨</div>
+        <div class="tl-content">
+          <div class="tl-date">The beginning</div>
+          <div class="tl-title">How we met</div>
+          <div class="tl-desc">Add your story here — where it all started. Every great love has a first chapter.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">💬</div>
+        <div class="tl-content">
+          <div class="tl-date">The conversation</div>
+          <div class="tl-title">First words</div>
+          <div class="tl-desc">That first message that changed everything. What did you say? What did she say back?</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">🌹</div>
+        <div class="tl-content">
+          <div class="tl-date">The date</div>
+          <div class="tl-title">First date</div>
+          <div class="tl-desc">Where did you go? What did she wear? Describe the butterflies. This is the chapter readers love most.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">😂</div>
+        <div class="tl-content">
+          <div class="tl-date">Real love</div>
+          <div class="tl-title">The funny moments</div>
+          <div class="tl-desc">The silly fights, the inside jokes, the moments only you two understand. This is what makes it real.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">🌙</div>
+        <div class="tl-content">
+          <div class="tl-date">Looking ahead</div>
+          <div class="tl-title">Future dreams</div>
+          <div class="tl-desc">The places you'll go, the things you'll build. Every adventure still to come.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOVE LETTERS -->
+<section id="letters">
+  <div class="section-inner">
+    <p class="section-tag reveal">Sealed with love</p>
+    <h2 class="section-title reveal"><em>Letters</em> for you</h2>
+    <p class="section-body reveal">Some things are better felt in the right moment. Tap the envelope that speaks to your heart today, Sneha.</p>
+
+    <div class="letters-grid reveal">
+
+      <div class="letter-card" onclick="openLetter(this)">
+        <span class="letter-icon">😢</span>
+        <div class="letter-title">Open when you're sad</div>
+        <div class="letter-lock">Tap to open</div>
+        <div class="letter-overlay">
+          <div class="letter-msg">"Even your tears are beautiful to me. I'm right here, always. Come, let me hold you. ❤️"</div>
+          <span class="letter-close" onclick="closeLetter(event, this)">close</span>
+        </div>
+      </div>
+
+      <div class="letter-card" onclick="openLetter(this)">
+        <span class="letter-icon">💭</span>
+        <div class="letter-title">Open when you miss me</div>
+        <div class="letter-lock">Tap to open</div>
+        <div class="letter-overlay">
+          <div class="letter-msg">"I'm missing you at the exact same time. That's just what we do — we miss each other into the same moment. 🌙"</div>
+          <span class="letter-close" onclick="closeLetter(event, this)">close</span>
+        </div>
+      </div>
+
+      <div class="letter-card" onclick="openLetter(this)">
+        <span class="letter-icon">😤</span>
+        <div class="letter-title">Open when we're fighting</div>
+        <div class="letter-lock">Tap to open</div>
+        <div class="letter-overlay">
+          <div class="letter-msg">"I love you more than this argument. Let's be okay. Come back to me? 🕊️"</div>
+          <span class="letter-close" onclick="closeLetter(event, this)">close</span>
+        </div>
+      </div>
+
+      <div class="letter-card" onclick="openLetter(this)">
+        <span class="letter-icon">🎂</span>
+        <div class="letter-title">Open on your birthday</div>
+        <div class="letter-lock">Tap to open</div>
+        <div class="letter-overlay">
+          <div class="letter-msg">"The world became a better place the day you were born. Happy Birthday, my love. 🎉"</div>
+          <span class="letter-close" onclick="closeLetter(event, this)">close</span>
+        </div>
+      </div>
+
+      <div class="letter-card" onclick="openLetter(this)">
+        <span class="letter-icon">🌟</span>
+        <div class="letter-title">Open when you need strength</div>
+        <div class="letter-lock">Tap to open</div>
+        <div class="letter-overlay">
+          <div class="letter-msg">"You are stronger than you think. I've seen you fight battles no one knows about. I believe in you always. ✨"</div>
+          <span class="letter-close" onclick="closeLetter(event, this)">close</span>
+        </div>
+      </div>
+
+      <div class="letter-card" onclick="openLetter(this)">
+        <span class="letter-icon">🌙</span>
+        <div class="letter-title">Open at midnight</div>
+        <div class="letter-lock">Tap to open</div>
+        <div class="letter-overlay">
+          <div class="letter-msg">"Are you awake? I think of you at midnight too. Goodnight, my person. 🌌"</div>
+          <span class="letter-close" onclick="closeLetter(event, this)">close</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REASONS I LOVE YOU -->
+<section id="reasons">
+  <div class="section-inner">
+    <p class="section-tag reveal">From Utkarsh</p>
+    <h2 class="section-title reveal">Reasons I <em>love you</em></h2>
+    <p class="section-body reveal">A hundred reasons. One random one, every time you tap. Because you deserve to hear it over and over again.</p>
+
+    <div class="reason-display reveal">
+      <div class="reason-num" id="reason-num">Reason #1</div>
+      <div class="reason-text" id="reason-text">The way your eyes light up when you talk about something you love — I could watch it forever.</div>
+      <button class="reason-btn" onclick="nextReason()">Another reason ♡</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="section-inner">
+    <p class="section-tag reveal">By the numbers</p>
+    <h2 class="section-title reveal">Us, <em>in stats</em></h2>
+    <p class="section-body reveal">Some things you can count. Some things you can only feel. Here are both.</p>
+
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <span class="stat-icon">📅</span>
+        <div class="stat-num" id="days-together">0</div>
+        <div class="stat-label">Days together</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">☕</span>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Cups of chai shared</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">😂</span>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Times I made you laugh</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">💌</span>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Messages sent</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">🌙</span>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Late night calls</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">💗</span>
+        <div class="stat-num">100</div>
+        <div class="stat-label">Reasons I love you</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECRET AREA -->
+<section id="secret">
+  <div class="section-inner">
+    <p class="section-tag reveal">Shhh...</p>
+    <h2 class="section-title reveal">A <em>secret</em> just for Sneha</h2>
+    <p class="section-body reveal">You know the password. You always did.</p>
+
+    <div class="secret-box reveal">
+      <span class="secret-lock">🔐</span>
+      <p class="secret-hint">This is a place just for you, Sneha. Enter our little secret to unlock it.</p>
+      <input class="secret-input" id="secret-input" type="password" placeholder="our little secret..." />
+      <div class="secret-error" id="secret-error">Hmm, that's not right. Think of something only we know... 💭</div>
+      <button class="secret-btn" onclick="checkSecret()">Unlock ♡</button>
+      <div class="secret-content" id="secret-reveal">
+        <div class="secret-message">
+          "Sneha, if you're reading this — it means you found your way here, just like you found your way to my heart.<br><br>
+          I love you more than words can hold. You are my home. 💗<br><br>
+          — Utkarsh, always."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-love">Utkarsh ♡ Sneha</span>
+  Made with love, for the one who makes everything better.
+</footer>
+
+<script>
+  /* ── configuration — change these! ── */
+  const START_DATE = new Date('2024-01-01T00:00:00'); // change to your real date
+  const SECRET_PASSWORD = 'sneha'; // change to your real password
+
+  /* ── reasons list ── */
+  const reasons = [
+    "The way your eyes light up when you talk about something you love.",
+    "You make ordinary moments feel like the best memories.",
+    "The sound of your laugh — it's my favourite sound in the world.",
+    "How you care so deeply about the people you love.",
+    "The way you say my name — no one else says it like you do.",
+    "You make me want to be better, every single day.",
+    "Your smile. It fixes everything. Instantly.",
+    "The way you remember small details that matter to me.",
+    "How brave you are, even when you don't feel it.",
+    "You are home. Wherever you are, that's where I want to be.",
+    "The little things you do that you don't even notice.",
+    "You chose me. That is the most beautiful thing.",
+    "Your heart — it's the kindest heart I know.",
+    "The way you look when you're lost in thought.",
+    "You make love feel safe and exciting at the same time.",
+    "Even your flaws make you more beautiful to me.",
+    "You hold my hand like you mean it.",
+    "The way you make everything brighter just by being in it.",
+    "You are the first person I want to tell everything to.",
+    "Loving you is the best decision I never had to think twice about.",
+  ];
+
+  let currentReason = 0;
+
+  function nextReason() {
+    const text = document.getElementById('reason-text');
+    const num = document.getElementById('reason-num');
+    text.style.opacity = '0';
+    setTimeout(() => {
+      currentReason = (currentReason + 1) % reasons.length;
+      text.textContent = reasons[currentReason];
+      num.textContent = 'Reason #' + (currentReason + 1);
+      text.style.opacity = '1';
+    }, 300);
+  }
+
+  /* ── timer ── */
+  function updateTimer() {
+    const now = new Date();
+    const diff = now - START_DATE;
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById('t-days').textContent = days.toLocaleString();
+    document.getElementById('t-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('t-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('t-secs').textContent = String(secs).padStart(2,'0');
+    document.getElementById('days-together').textContent = days.toLocaleString();
+
+    const opts = { day: 'numeric', month: 'long', year: 'numeric' };
+    document.getElementById('since-date').textContent = START_DATE.toLocaleDateString('en-IN', opts);
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  /* ── secret ── */
+  function checkSecret() {
+    const val = document.getElementById('secret-input').value.trim().toLowerCase();
+    const err = document.getElementById('secret-error');
+    const content = document.getElementById('secret-reveal');
+    if (val === SECRET_PASSWORD.toLowerCase()) {
+      content.classList.add('visible');
+      err.style.display = 'none';
+    } else {
+      err.style.display = 'block';
+      content.classList.remove('visible');
+    }
+  }
+
+  document.getElementById('secret-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkSecret();
+  });
+
+  /* ── letters ── */
+  function openLetter(card) {
+    if (!card.classList.contains('open')) {
+      card.classList.add('open');
+    }
+  }
+
+  function closeLetter(e, btn) {
+    e.stopPropagation();
+    btn.closest('.letter-card').classList.remove('open');
+  }
+
+  /* ── scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ── floating hearts ── */
+  const canvas = document.getElementById('hearts-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const HEARTS = Array.from({ length: 22 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight + window.innerHeight,
+    size: Math.random() * 12 + 6,
+    speed: Math.random() * 0.5 + 0.2,
+    opacity: Math.random() * 0.18 + 0.04,
+    sway: Math.random() * 1.5 - 0.75,
+    phase: Math.random() * Math.PI * 2,
+    color: Math.random() > 0.5 ? '#e8698a' : '#b57bee',
+  }));
+
+  function drawHeart(ctx, x, y, size, color, alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = color;
+    ctx.translate(x, y);
+    ctx.beginPath();
+    ctx.moveTo(0, -size * 0.3);
+    ctx.bezierCurveTo(size * 0.5, -size, size, -size * 0.3, 0, size * 0.5);
+    ctx.bezierCurveTo(-size, -size * 0.3, -size * 0.5, -size, 0, -size * 0.3);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  let frame = 0;
+  function animHearts() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    frame++;
+    HEARTS.forEach(h => {
+      h.y -= h.speed;
+      h.x += Math.sin(frame * 0.01 + h.phase) * h.sway * 0.3;
+      if (h.y < -30) {
+        h.y = canvas.height + 30;
+        h.x = Math.random() * canvas.width;
+      }
+      drawHeart(ctx, h.x, h.y, h.size, h.color, h.opacity);
+    });
+    requestAnimationFrame(animHearts);
+  }
+  animHearts();
+</script>
