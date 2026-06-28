@@ -1,8 +1,11 @@
-
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap');
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   :root {
     --rose: #e8698a;
@@ -29,8 +32,10 @@
   /* ── floating hearts canvas ── */
   #hearts-canvas {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 0;
   }
@@ -38,9 +43,11 @@
   /* ── nav ── */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
-    background: rgba(253,240,244,0.82);
+    background: rgba(253, 240, 244, 0.82);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--rose-light);
     padding: 0 2rem;
@@ -72,7 +79,9 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--rose); }
+  .nav-links a:hover {
+    color: var(--rose);
+  }
 
   /* ── sections ── */
   section {
@@ -145,7 +154,7 @@
     padding: 1rem 1.25rem;
     min-width: 72px;
     text-align: center;
-    box-shadow: 0 2px 20px rgba(232,105,138,0.08);
+    box-shadow: 0 2px 20px rgba(232, 105, 138, 0.08);
   }
 
   .timer-block .num {
@@ -183,7 +192,9 @@
     animation: fadeUp 0.9s 1s forwards;
   }
 
-  .date-badge span { font-size: 0.9rem; }
+  .date-badge span {
+    font-size: 0.9rem;
+  }
 
   /* ── scroll hint ── */
   .scroll-hint {
@@ -203,7 +214,8 @@
   }
 
   .scroll-dot {
-    width: 6px; height: 6px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--rose-light);
   }
@@ -245,7 +257,9 @@
   }
 
   /* ── our story timeline ── */
-  #story { background: white; }
+  #story {
+    background: white;
+  }
 
   .timeline {
     position: relative;
@@ -256,7 +270,8 @@
     content: '';
     position: absolute;
     left: 18px;
-    top: 0; bottom: 0;
+    top: 0;
+    bottom: 0;
     width: 1.5px;
     background: linear-gradient(to bottom, var(--rose-light), var(--lavender-light));
   }
@@ -270,7 +285,8 @@
 
   .tl-dot {
     flex-shrink: 0;
-    width: 38px; height: 38px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: var(--rose-pale);
     border: 1.5px solid var(--rose-light);
@@ -312,7 +328,9 @@
   }
 
   /* ── love letters ── */
-  #letters { background: var(--lavender-pale); }
+  #letters {
+    background: var(--lavender-pale);
+  }
 
   .letters-grid {
     display: grid;
@@ -335,10 +353,14 @@
 
   .letter-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(181,123,238,0.14);
+    box-shadow: 0 8px 30px rgba(181, 123, 238, 0.14);
   }
 
-  .letter-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+  .letter-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
 
   .letter-title {
     font-family: 'Playfair Display', serif;
@@ -393,7 +415,9 @@
   }
 
   /* ── reasons ── */
-  #reasons { background: white; }
+  #reasons {
+    background: white;
+  }
 
   .reason-display {
     margin-top: 2rem;
@@ -448,7 +472,9 @@
   }
 
   /* ── secret area ── */
-  #secret { background: var(--rose-pale); }
+  #secret {
+    background: var(--rose-pale);
+  }
 
   .secret-box {
     margin-top: 2rem;
@@ -460,7 +486,11 @@
     max-width: 420px;
   }
 
-  .secret-lock { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .secret-lock {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
 
   .secret-hint {
     font-size: 0.82rem;
@@ -482,7 +512,9 @@
     transition: border-color 0.2s;
   }
 
-  .secret-input:focus { border-color: var(--rose); }
+  .secret-input:focus {
+    border-color: var(--rose);
+  }
 
   .secret-btn {
     margin-top: 0.8rem;
@@ -500,14 +532,18 @@
     width: 100%;
   }
 
-  .secret-btn:hover { background: #d05578; }
+  .secret-btn:hover {
+    background: #d05578;
+  }
 
   .secret-content {
     display: none;
     margin-top: 1.5rem;
   }
 
-  .secret-content.visible { display: block; }
+  .secret-content.visible {
+    display: block;
+  }
 
   .secret-message {
     font-family: 'Dancing Script', cursive;
@@ -524,7 +560,9 @@
   }
 
   /* ── stats ── */
-  #stats { background: var(--lavender-pale); }
+  #stats {
+    background: var(--lavender-pale);
+  }
 
   .stats-grid {
     display: grid;
@@ -541,7 +579,11 @@
     text-align: center;
   }
 
-  .stat-icon { font-size: 1.6rem; margin-bottom: 0.4rem; display: block; }
+  .stat-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
 
   .stat-num {
     font-family: 'Playfair Display', serif;
@@ -562,7 +604,7 @@
   /* ── footer ── */
   footer {
     background: var(--text-dark);
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     text-align: center;
     padding: 2rem;
     font-size: 0.75rem;
@@ -581,18 +623,39 @@
 
   /* ── animations ── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 1;
+    }
   }
 
   @keyframes floatIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .reveal {
@@ -608,57 +671,216 @@
 
   /* ── mobile ── */
   @media (max-width: 600px) {
-    .nav-links { display: none; }
-    .timer-wrap { gap: 0.6rem; }
-    .timer-block { min-width: 58px; padding: 0.75rem; }
-    .timer-block .num { font-size: 1.5rem; }
+    .nav-links {
+      display: none;
+    }
+
+    .timer-wrap {
+      gap: 0.6rem;
+    }
+
+    .timer-block {
+      min-width: 58px;
+      padding: 0.75rem;
+    }
+
+    .timer-block .num {
+      font-size: 1.5rem;
+    }
   }
 </style>
 
-<div id="passwordScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(145deg,#fdf0f4 0%,#f7f0fd 55%,#fdf0f4 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;overflow:hidden;">
+<div id="passwordScreen"
+  style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(145deg,#fdf0f4 0%,#f7f0fd 55%,#fdf0f4 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;overflow:hidden;">
 
   <canvas id="ps-canvas" style="position:absolute;inset:0;pointer-events:none;"></canvas>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@500&family=Lato:wght@300;400&display=swap');
-    #ps-card{animation:psIn 0.6s ease both}
-    @keyframes psIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-    @keyframes psShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
-    #ps-input:focus{border-color:#e8698a!important;box-shadow:0 0 0 3px rgba(232,105,138,0.12)!important;outline:none}
-    #ps-input::placeholder{color:#c4a0b0;font-style:italic;letter-spacing:0.04em}
-    .ps-dot{width:6px;height:6px;border-radius:50%;background:rgba(232,105,138,0.2);transition:background 0.2s}
-    .ps-dot.filled{background:#e8698a}
+
+    #ps-card {
+      animation: psIn 0.6s ease both
+    }
+
+    @keyframes psIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes psShake {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      20% {
+        transform: translateX(-6px)
+      }
+
+      40% {
+        transform: translateX(6px)
+      }
+
+      60% {
+        transform: translateX(-4px)
+      }
+
+      80% {
+        transform: translateX(4px)
+      }
+    }
+
+    #ps-input:focus {
+      border-color: #e8698a !important;
+      box-shadow: 0 0 0 3px rgba(232, 105, 138, 0.12) !important;
+      outline: none
+    }
+
+    #ps-input::placeholder {
+      color: #c4a0b0;
+      font-style: italic;
+      letter-spacing: 0.04em
+    }
+
+    .ps-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(232, 105, 138, 0.2);
+      transition: background 0.2s
+    }
+
+    .ps-dot.filled {
+      background: #e8698a
+    }
   </style>
 
-  <div id="ps-card" style="position:relative;background:rgba(255,255,255,0.72);backdrop-filter:blur(14px);border:1px solid rgba(232,105,138,0.18);border-radius:28px;padding:3rem 2.6rem 2.4rem;width:min(360px,90%);display:flex;flex-direction:column;align-items:center;">
+  <div id="ps-card"
+    style="position:relative;background:rgba(255,255,255,0.72);backdrop-filter:blur(14px);border:1px solid rgba(232,105,138,0.18);border-radius:28px;padding:3rem 2.6rem 2.4rem;width:min(360px,90%);display:flex;flex-direction:column;align-items:center;">
 
-    <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#f7c5d5,#e8d5f9);border:1.5px solid rgba(232,105,138,0.22);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;">
+    <div
+      style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#f7c5d5,#e8d5f9);border:1.5px solid rgba(232,105,138,0.22);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;">
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-        <path d="M18 7C18 7 8 13 8 20C8 26 13 30 18 30C23 30 28 26 28 20C28 13 18 7 18 7Z" stroke="#e8698a" stroke-width="1.5" fill="none"/>
-        <path d="M13 17Q18 22 23 17" stroke="#b57bee" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-        <circle cx="18" cy="14" r="1.8" fill="#e8698a" opacity="0.7"/>
-        <path d="M11 22Q18 28 25 22" stroke="#e8698a" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
+        <path d="M18 7C18 7 8 13 8 20C8 26 13 30 18 30C23 30 28 26 28 20C28 13 18 7 18 7Z" stroke="#e8698a"
+          stroke-width="1.5" fill="none" />
+        <path d="M13 17Q18 22 23 17" stroke="#b57bee" stroke-width="1.5" stroke-linecap="round" fill="none" />
+        <circle cx="18" cy="14" r="1.8" fill="#e8698a" opacity="0.7" />
+        <path d="M11 22Q18 28 25 22" stroke="#e8698a" stroke-width="1" stroke-linecap="round" fill="none"
+          opacity="0.4" />
       </svg>
     </div>
 
-    <h2 style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#4a2c3a;margin:0 0 0.3rem;text-align:center;">Welcome back My Jerry</h2>
-    <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:#b07890;margin:0 0 2rem;text-align:center;">This place was made for you ♡</p>
+    <!-- ✅ FLOATING PETALS & HEARTS — paste before </body> in index.html -->
+    <style>
+      .love-float {
+        position: fixed;
+        pointer-events: none;
+        user-select: none;
+        z-index: 99999;
+        bottom: -80px;
+        animation: loveFloat linear infinite;
+        opacity: 0;
+      }
+
+      @keyframes loveFloat {
+        0% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+          opacity: 0;
+        }
+
+        8% {
+          opacity: 0.75;
+        }
+
+        92% {
+          opacity: 0.5;
+        }
+
+        100% {
+          transform: translateY(-110vh) rotate(30deg) scale(0.6);
+          opacity: 0;
+        }
+      }
+    </style>
+
+    <script>
+      (function () {
+        var emojis = ['🌸', '🌺', '💗', '💕', '🌷', '💐', '🌹', '✨', '💖', '🩷', '🪷', '💫', '🌼', '🫶', '🎀', '🌻'];
+        var active = 0;
+        var max = 15;
+
+        function spawn() {
+          if (active >= max) return;
+          var el = document.createElement('span');
+          el.className = 'love-float';
+          el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          el.style.left = Math.random() * 97 + '%';
+          el.style.fontSize = (Math.random() * 16 + 10) + 'px';
+          el.style.animationDuration = (Math.random() * 14 + 9) + 's';
+          el.style.animationDelay = (Math.random() * 3) + 's';
+          document.body.appendChild(el);
+          active++;
+          el.addEventListener('animationend', function () {
+            el.remove();
+            active--;
+          });
+        }
+
+        // spawn initial batch
+        for (var i = 0; i < 22; i++) {
+          setTimeout(spawn, i * 350);
+        }
+
+        // keep refilling
+        setInterval(function () {
+          if (active < max) spawn();
+        }, 1500);
+      })();
+    </script>
+
+    <h2
+      style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#4a2c3a;margin:0 0 0.3rem;text-align:center;">
+      Welcome back My Jerry</h2>
+    <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:#b07890;margin:0 0 2rem;text-align:center;">This
+      place was made for you ♡</p>
 
     <div style="position:relative;width:100%;margin-bottom:1rem;">
       <input type="password" id="passwordInput" placeholder="our little secret..." maxlength="20" autocomplete="off"
-        style="width:100%;padding:0.9rem 3rem 0.9rem 1.3rem;border:1.5px solid rgba(232,105,138,0.25);border-radius:999px;font-family:'Lato',sans-serif;font-size:0.92rem;color:#4a2c3a;background:rgba(255,255,255,0.9);text-align:center;letter-spacing:0.12em;"/>
-      <button onclick="togglePsVisibility()" tabindex="-1" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#c4a0b0;padding:4px;display:flex;align-items:center;">
-        <svg id="ps-eye-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        style="width:100%;padding:0.9rem 3rem 0.9rem 1.3rem;border:1.5px solid rgba(232,105,138,0.25);border-radius:999px;font-family:'Lato',sans-serif;font-size:0.92rem;color:#4a2c3a;background:rgba(255,255,255,0.9);text-align:center;letter-spacing:0.12em;" />
+      <button onclick="togglePsVisibility()" tabindex="-1"
+        style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#c4a0b0;padding:4px;display:flex;align-items:center;">
+        <svg id="ps-eye-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
       </button>
     </div>
 
     <div style="display:flex;gap:6px;margin-bottom:1.6rem;" id="ps-dots">
-      <div class="ps-dot"></div><div class="ps-dot"></div><div class="ps-dot"></div><div class="ps-dot"></div><div class="ps-dot"></div>
+      <div class="ps-dot"></div>
+      <div class="ps-dot"></div>
+      <div class="ps-dot"></div>
+      <div class="ps-dot"></div>
+      <div class="ps-dot"></div>
     </div>
 
-    <button onclick="checkPassword()" id="ps-enter-btn" style="width:100%;padding:0.85rem;background:linear-gradient(135deg,#e8698a,#b57bee);color:white;border:none;border-radius:999px;font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;margin-bottom:1rem;">Unlock &nbsp;♡</button>
-    <div id="error" style="font-family:'Dancing Script',cursive;font-size:0.92rem;color:#d05578;text-align:center;min-height:1.4rem;"></div>
-    <div style="font-size:0.7rem;color:#c4a0b0;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.6rem;">Only she knows the way in</div>
+    <button onclick="checkPassword()" id="ps-enter-btn"
+      style="width:100%;padding:0.85rem;background:linear-gradient(135deg,#e8698a,#b57bee);color:white;border:none;border-radius:999px;font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;margin-bottom:1rem;">Unlock
+      &nbsp;♡</button>
+    <div id="error"
+      style="font-family:'Dancing Script',cursive;font-size:0.92rem;color:#d05578;text-align:center;min-height:1.4rem;">
+    </div>
+    <div style="font-size:0.7rem;color:#c4a0b0;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.6rem;">Only
+      she knows the way in</div>
   </div>
 </div>
 
@@ -669,7 +891,7 @@
 <nav>
   <div class="nav-brand">U & S</div>
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
+    <li><a href="D:\C lang\US\memory_vault_page.html">Memories</a></li>
     <li><a href="#story">Our Story</a></li>
     <li><a href="#letters">Letters</a></li>
     <li><a href="#reasons">Reasons</a></li>
@@ -718,7 +940,8 @@
   <div class="section-inner">
     <p class="section-tag reveal">Chapter One</p>
     <h2 class="section-title reveal">Our <em>Story</em></h2>
-    <p class="section-body reveal">Every love story is beautiful, but ours is my favourite. Here are the moments that led us here — the small, ordinary magic that made everything extraordinary.</p>
+    <p class="section-body reveal">Every love story is beautiful, but ours is my favourite. Here are the moments that
+      led us here — the small, ordinary magic that made everything extraordinary.</p>
 
     <div class="timeline reveal">
 
@@ -736,7 +959,8 @@
         <div class="tl-content">
           <div class="tl-date">The conversation</div>
           <div class="tl-title">First words</div>
-          <div class="tl-desc">That first message that changed everything. What did you say? What did she say back?</div>
+          <div class="tl-desc">That first message that changed everything. What did you say? What did she say back?
+          </div>
         </div>
       </div>
 
@@ -745,7 +969,8 @@
         <div class="tl-content">
           <div class="tl-date">The date</div>
           <div class="tl-title">First date</div>
-          <div class="tl-desc">Where did you go? What did she wear? Describe the butterflies. This is the chapter readers love most.</div>
+          <div class="tl-desc">Where did you go? What did she wear? Describe the butterflies. This is the chapter
+            readers love most.</div>
         </div>
       </div>
 
@@ -754,7 +979,8 @@
         <div class="tl-content">
           <div class="tl-date">Real love</div>
           <div class="tl-title">The funny moments</div>
-          <div class="tl-desc">The silly fights, the inside jokes, the moments only you two understand. This is what makes it real.</div>
+          <div class="tl-desc">The silly fights, the inside jokes, the moments only you two understand. This is what
+            makes it real.</div>
         </div>
       </div>
 
@@ -776,7 +1002,8 @@
   <div class="section-inner">
     <p class="section-tag reveal">Sealed with love</p>
     <h2 class="section-title reveal"><em>Letters</em> for you</h2>
-    <p class="section-body reveal">Some things are better felt in the right moment. Tap the envelope that speaks to your heart today, Sneha.</p>
+    <p class="section-body reveal">Some things are better felt in the right moment. Tap the envelope that speaks to your
+      heart today, Sneha.</p>
 
     <div class="letters-grid reveal">
 
@@ -785,7 +1012,8 @@
         <div class="letter-title">Open when you're sad</div>
         <div class="letter-lock">Tap to open</div>
         <div class="letter-overlay">
-          <div class="letter-msg">"Even your tears are beautiful to me. I'm right here, always. Come, let me hold you. ❤️"</div>
+          <div class="letter-msg">"Even your tears are beautiful to me. I'm right here, always. Come, let me hold you.
+            ❤️"</div>
           <span class="letter-close" onclick="closeLetter(event, this)">close</span>
         </div>
       </div>
@@ -795,7 +1023,8 @@
         <div class="letter-title">Open when you miss me</div>
         <div class="letter-lock">Tap to open</div>
         <div class="letter-overlay">
-          <div class="letter-msg">"I'm missing you at the exact same time. That's just what we do — we miss each other into the same moment. 🌙"</div>
+          <div class="letter-msg">"I'm missing you at the exact same time. That's just what we do — we miss each other
+            into the same moment. 🌙"</div>
           <span class="letter-close" onclick="closeLetter(event, this)">close</span>
         </div>
       </div>
@@ -815,7 +1044,8 @@
         <div class="letter-title">Open on your birthday</div>
         <div class="letter-lock">Tap to open</div>
         <div class="letter-overlay">
-          <div class="letter-msg">"The world became a better place the day you were born. Happy Birthday, my love. 🎉"</div>
+          <div class="letter-msg">"The world became a better place the day you were born. Happy Birthday, my love. 🎉"
+          </div>
           <span class="letter-close" onclick="closeLetter(event, this)">close</span>
         </div>
       </div>
@@ -825,7 +1055,8 @@
         <div class="letter-title">Open when you need strength</div>
         <div class="letter-lock">Tap to open</div>
         <div class="letter-overlay">
-          <div class="letter-msg">"You are stronger than you think. I've seen you fight battles no one knows about. I believe in you always. ✨"</div>
+          <div class="letter-msg">"You are stronger than you think. I've seen you fight battles no one knows about. I
+            believe in you always. ✨"</div>
           <span class="letter-close" onclick="closeLetter(event, this)">close</span>
         </div>
       </div>
@@ -849,11 +1080,13 @@
   <div class="section-inner">
     <p class="section-tag reveal">From Utkarsh</p>
     <h2 class="section-title reveal">Reasons I <em>love you</em></h2>
-    <p class="section-body reveal">A hundred reasons. One random one, every time you tap. Because you deserve to hear it over and over again.</p>
+    <p class="section-body reveal">A hundred reasons. One random one, every time you tap. Because you deserve to hear it
+      over and over again.</p>
 
     <div class="reason-display reveal">
       <div class="reason-num" id="reason-num">Reason #1</div>
-      <div class="reason-text" id="reason-text">The way your eyes light up when you talk about something you love — I could watch it forever.</div>
+      <div class="reason-text" id="reason-text">The way your eyes light up when you talk about something you love — I
+        could watch it forever.</div>
       <button class="reason-btn" onclick="nextReason()">Another reason ♡</button>
     </div>
   </div>
@@ -916,7 +1149,8 @@
       <button class="secret-btn" onclick="checkSecret()">Unlock ♡</button>
       <div class="secret-content" id="secret-reveal">
         <div class="secret-message">
-          "Sneha, if you're reading this — it means you found your way here, just like you found your way to my heart.<br><br>
+          "Sneha, if you're reading this — it means you found your way here, just like you found your way to my
+          heart.<br><br>
           I love you more than words can hold. You are my home. 💗<br><br>
           — Utkarsh, always."
         </div>
@@ -984,9 +1218,9 @@
     const secs = Math.floor((diff % 60000) / 1000);
 
     document.getElementById('t-days').textContent = days.toLocaleString();
-    document.getElementById('t-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('t-mins').textContent = String(mins).padStart(2,'0');
-    document.getElementById('t-secs').textContent = String(secs).padStart(2,'0');
+    document.getElementById('t-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('t-mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('t-secs').textContent = String(secs).padStart(2, '0');
     document.getElementById('days-together').textContent = days.toLocaleString();
 
     const opts = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -1090,70 +1324,70 @@
   animHearts();
 
   // dot indicators
-document.getElementById('passwordInput').addEventListener('input', function() {
-  const dots = document.querySelectorAll('.ps-dot');
-  const len = Math.min(this.value.length, dots.length);
-  dots.forEach((d, i) => d.classList.toggle('filled', i < len));
-  document.getElementById('error').textContent = '';
-});
+  document.getElementById('passwordInput').addEventListener('input', function () {
+    const dots = document.querySelectorAll('.ps-dot');
+    const len = Math.min(this.value.length, dots.length);
+    dots.forEach((d, i) => d.classList.toggle('filled', i < len));
+    document.getElementById('error').textContent = '';
+  });
 
-document.getElementById('passwordInput').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') checkPassword();
-});
+  document.getElementById('passwordInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') checkPassword();
+  });
 
-function checkPassword() {
-  const val = document.getElementById('passwordInput').value.trim();
-  if (val.toLowerCase() === 'snarsh26') {
-    document.getElementById('passwordScreen').style.opacity = '0';
-    document.getElementById('passwordScreen').style.transition = 'opacity 0.6s ease';
-    setTimeout(() => document.getElementById('passwordScreen').style.display = 'none', 600);
-  } else {
-    document.getElementById('error').textContent = "that's not quite right, love 💭";
-    const btn = document.getElementById('ps-enter-btn');
-    btn.style.animation = 'none';
-    void btn.offsetWidth;
-    btn.style.animation = 'psShake 0.4s ease';
-    document.getElementById('passwordInput').value = '';
-    document.querySelectorAll('.ps-dot').forEach(d => d.classList.remove('filled'));
+  function checkPassword() {
+    const val = document.getElementById('passwordInput').value.trim();
+    if (val.toLowerCase() === 'snarsh26') {
+      document.getElementById('passwordScreen').style.opacity = '0';
+      document.getElementById('passwordScreen').style.transition = 'opacity 0.6s ease';
+      setTimeout(() => document.getElementById('passwordScreen').style.display = 'none', 600);
+    } else {
+      document.getElementById('error').textContent = "that's not quite right, love 💭";
+      const btn = document.getElementById('ps-enter-btn');
+      btn.style.animation = 'none';
+      void btn.offsetWidth;
+      btn.style.animation = 'psShake 0.4s ease';
+      document.getElementById('passwordInput').value = '';
+      document.querySelectorAll('.ps-dot').forEach(d => d.classList.remove('filled'));
+    }
   }
-}
 
-function togglePsVisibility() {
-  const inp = document.getElementById('passwordInput');
-  const icon = document.getElementById('ps-eye-icon');
-  inp.type = inp.type === 'password' ? 'text' : 'password';
-  icon.innerHTML = inp.type === 'text'
-    ? `<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>`
-    : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
-}
-
-// floating hearts on canvas
-(function() {
-  const canvas = document.getElementById('ps-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const wrap = document.getElementById('passwordScreen');
-  canvas.width = wrap.offsetWidth; canvas.height = wrap.offsetHeight;
-  const H = Array.from({length:16}, () => ({
-    x: Math.random()*canvas.width, y: Math.random()*canvas.height+canvas.height,
-    s: Math.random()*9+4, sp: Math.random()*0.45+0.18,
-    a: Math.random()*0.1+0.04, ph: Math.random()*Math.PI*2,
-    c: Math.random()>0.5?'#e8698a':'#b57bee'
-  }));
-  let f=0;
-  function loop(){
-    ctx.clearRect(0,0,canvas.width,canvas.height); f++;
-    H.forEach(h=>{
-      h.y-=h.sp; h.x+=Math.sin(f*0.012+h.ph)*0.25;
-      if(h.y<-20){h.y=canvas.height+20;h.x=Math.random()*canvas.width;}
-      ctx.save(); ctx.globalAlpha=h.a; ctx.fillStyle=h.c; ctx.translate(h.x,h.y);
-      ctx.beginPath(); ctx.moveTo(0,-h.s*0.28);
-      ctx.bezierCurveTo(h.s*0.5,-h.s,h.s,-h.s*0.28,0,h.s*0.5);
-      ctx.bezierCurveTo(-h.s,-h.s*0.28,-h.s*0.5,-h.s,0,-h.s*0.28);
-      ctx.fill(); ctx.restore();
-    });
-    requestAnimationFrame(loop);
+  function togglePsVisibility() {
+    const inp = document.getElementById('passwordInput');
+    const icon = document.getElementById('ps-eye-icon');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    icon.innerHTML = inp.type === 'text'
+      ? `<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>`
+      : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
   }
-  loop();
-})();
+
+  // floating hearts on canvas
+  (function () {
+    const canvas = document.getElementById('ps-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const wrap = document.getElementById('passwordScreen');
+    canvas.width = wrap.offsetWidth; canvas.height = wrap.offsetHeight;
+    const H = Array.from({ length: 16 }, () => ({
+      x: Math.random() * canvas.width, y: Math.random() * canvas.height + canvas.height,
+      s: Math.random() * 9 + 4, sp: Math.random() * 0.45 + 0.18,
+      a: Math.random() * 0.1 + 0.04, ph: Math.random() * Math.PI * 2,
+      c: Math.random() > 0.5 ? '#e8698a' : '#b57bee'
+    }));
+    let f = 0;
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); f++;
+      H.forEach(h => {
+        h.y -= h.sp; h.x += Math.sin(f * 0.012 + h.ph) * 0.25;
+        if (h.y < -20) { h.y = canvas.height + 20; h.x = Math.random() * canvas.width; }
+        ctx.save(); ctx.globalAlpha = h.a; ctx.fillStyle = h.c; ctx.translate(h.x, h.y);
+        ctx.beginPath(); ctx.moveTo(0, -h.s * 0.28);
+        ctx.bezierCurveTo(h.s * 0.5, -h.s, h.s, -h.s * 0.28, 0, h.s * 0.5);
+        ctx.bezierCurveTo(-h.s, -h.s * 0.28, -h.s * 0.5, -h.s, 0, -h.s * 0.28);
+        ctx.fill(); ctx.restore();
+      });
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
 </script>
